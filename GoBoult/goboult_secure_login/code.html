@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f4f0ef",
+                      "surface-bright": "#fcf8f8",
+                      "on-surface": "#1c1b1b",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#e2e2e2",
+                      "on-tertiary-container": "#677f00",
+                      "on-surface-variant": "#444748",
+                      "inverse-primary": "#c6c6c7",
+                      "on-background": "#1c1b1b",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#ddd9d9",
+                      "inverse-surface": "#313030",
+                      "on-secondary-fixed": "#1b1b1b",
+                      "outline": "#747878",
+                      "on-tertiary-fixed": "#171e00",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#e2e2e2",
+                      "surface-tint": "#5d5f5f",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary": "#526600",
+                      "primary-container": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#aed500",
+                      "on-secondary-container": "#646464",
+                      "on-tertiary-fixed-variant": "#3d4d00",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#1a1c1c",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#ffffff",
+                      "on-secondary-fixed-variant": "#474747",
+                      "surface": "#fcf8f8",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e5e2e1",
+                      "neon-glow": "rgba(209, 255, 0, 0.4)",
+                      "surface-container-high": "#ebe7e7",
+                      "glass-fill": "rgba(255, 255, 255, 0.7)",
+                      "primary": "#5d5f5f",
+                      "background": "#fcf8f8",
+                      "secondary": "#5e5e5e",
+                      "surface-container": "#f1edec",
+                      "tertiary-fixed": "#c7f300",
+                      "on-primary-container": "#747676",
+                      "glass-border": "rgba(0, 0, 0, 0.05)",
+                      "outline-variant": "#c4c7c8",
+                      "on-error": "#ffffff",
+                      "subtle-gray": "#BCBCBC",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-primary-fixed-variant": "#454747",
+                      "secondary-fixed-dim": "#c6c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "card-padding": "32px",
+                      "section-gap": "80px",
+                      "container-max": "1200px",
+                      "gutter": "24px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "metric-xl": ["Sora"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Sora"],
+                      "display-lg": ["Sora"],
+                      "headline-lg": ["Sora"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Sora"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .neon-focus:focus-within {
+            border-color: #1c1b1b;
+            box-shadow: 0 0 12px rgba(199, 243, 0, 0.5);
+        }
+        .neon-btn-glow:hover {
+            box-shadow: 0 0 25px rgba(199, 243, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Abstract Background Elements -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-tertiary-fixed opacity-10 blur-[100px]"></div>
+<div class="absolute bottom-[-15%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-surface-container-high opacity-40 blur-[120px]"></div>
+<div class="absolute top-1/4 left-1/4 w-32 h-32 border border-tertiary-fixed/20 rounded-full rotate-45"></div>
+<div class="absolute bottom-1/4 right-1/3 w-64 h-64 border border-outline-variant/10 rounded-xl -rotate-12"></div>
+</div>
+<!-- Main Container -->
+<main class="relative z-10 w-full max-w-[480px] px-margin-mobile">
+<!-- Brand Header -->
+<div class="flex flex-col items-center mb-section-gap/2">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">GoBoult</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2">Performance Medical Intelligence</p>
+</div>
+<!-- Login Card -->
+<div class="glass-card shadow-[0_20px_40px_rgba(0,0,0,0.03)] rounded-lg p-card-padding">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Welcome Back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Access your premium health dashboard.</p>
+</div>
+<form class="space-y-6">
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface pl-1">Email Address</label>
+<div class="relative group neon-focus rounded-full border border-subtle-gray transition-all duration-300">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">mail</span>
+<input class="w-full bg-transparent border-none rounded-full py-4 pl-12 pr-4 focus:ring-0 text-body-md placeholder:text-outline-variant" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="font-label-caps text-label-caps text-on-surface">Password</label>
+<a class="text-[11px] font-semibold text-tertiary hover:underline" href="#">Forgot Password?</a>
+</div>
+<div class="relative group neon-focus rounded-full border border-subtle-gray transition-all duration-300">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">lock</span>
+<input class="w-full bg-transparent border-none rounded-full py-4 pl-12 pr-4 focus:ring-0 text-body-md placeholder:text-outline-variant" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full bg-on-surface text-on-tertiary font-label-caps text-label-caps py-5 rounded-full transition-all duration-300 neon-btn-glow border border-transparent hover:border-tertiary-fixed active:scale-[0.98] mt-2" type="submit">
+                    Login
+                </button>
+<!-- Divider -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-glass-border"></div>
+<span class="flex-shrink mx-4 font-label-caps text-[10px] text-outline-variant uppercase tracking-widest">or continue with</span>
+<div class="flex-grow border-t border-glass-border"></div>
+</div>
+<!-- Google Button -->
+<button class="w-full bg-transparent border border-on-surface text-on-surface font-label-caps text-label-caps py-4 rounded-full flex items-center justify-center gap-3 hover:bg-on-surface hover:text-on-tertiary transition-all duration-300 active:scale-[0.98]" type="button">
+<img alt="Google Logo" class="w-5 h-5" data-alt="A clean and minimal high-resolution Google G logo set against a transparent background. The logo features its signature four colors: red, yellow, green, and blue. It is presented in a modern, flat design style suitable for a premium tech interface, maintaining perfect geometric proportions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnV2uEQx1BHWpcel6M1M2kEmY6U78XD48N1aJGlbzZ2raXRWdzqskEmCcLd8YzhpB2Ru5tNSgMabYUx4J96D9xiOxjCUhpHrlOP9LOLTJdqQ8giHXGhcJirCNHGFKE7bXEDxFdT_2PfrJVUBefM-bb5MZ11gXUUS9U4Wje6uwlHC7nZKMYtHzoHSUM1V5IqJu6RHOO8gSf_1vz3jtbxzDH8BLNNrhrBr2UcvNVuP71sRiXgn9OQW8E-m5SGoqYSc-1RxgV--UlXDk"/>
+                    Continue with Google
+                </button>
+</form>
+<!-- Register Link -->
+<div class="mt-8 text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-on-surface font-bold hover:text-tertiary-fixed transition-colors" href="#">Register</a>
+</p>
+</div>
+</div>
+<!-- Footer Visual Decor -->
+<div class="mt-section-gap/2 flex justify-center items-center gap-8 opacity-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-caps text-[10px] tracking-widest">ENCRYPTED</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="font-label-caps text-[10px] tracking-widest">REAL-TIME</span>
+</div>
+</div>
+</main>
+<!-- Decoration Images -->
+<div class="hidden lg:block absolute left-gutter bottom-gutter w-64 h-64 opacity-20 pointer-events-none">
+<img alt="Abstract DNA" data-alt="A futuristic, high-end 3D render of an abstract DNA double helix structure made of glowing translucent spheres and thin neon filaments. The lighting is soft and airy, matching a light-mode medical laboratory aesthetic. The color palette is dominated by pure whites and subtle hints of neon green and soft grays, creating a premium biotech feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO-uB0r4zZ70IB_3nwQK39ewdtogLtdHub2qecylUHeocHY1QHm2Zr6qhSzmSwcrgVItz-u8ELRjqVplbfnfOtxOoOWumFHIgEVOJ7AgmoVOluXQqSZL-Skn8lMmNLN89Irgk2axM5LIDYnUOSkt0VgEtIIGLVOGe6VDAiMshxLsV5-R5_3rwXfQgx_bz_6I0cbThdxRcRRleYR2Funu876y5LMLZHHSSRCmHtHUZDsc1RwkkLwXzuQsRKDCPbh3LpLetQyn6Vv2s"/>
+</div>
+<div class="hidden lg:block absolute right-gutter top-gutter w-72 h-72 opacity-20 pointer-events-none">
+<img alt="Geometric Metric" data-alt="Sophisticated 3D geometric shapes including floating glass spheres and faceted crystal structures arranged in a balanced, minimalist composition. Soft shadows and high-key lighting emphasize a premium Apple-style aesthetic. Accents of neon yellow-green provide a high-performance, futuristic health-tracking vibe against a clean white backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcPLRJ4foZhbWJ9qCEaP8liGxYP4U2WW4AmXoC-ffY3OxiKxCl20lvbqzU_HeY3HX5GqnFfPYHKt2DucgM7m6OSvSTisuugiTlbOQ-2dKdiS884v4EYXeu6dSadPoYyqYVA9ROO0NLcspSF-vqFQ5-8HUgCyYRPsQc25JEMCgql4_0lsC1sG2WmpLNefOzaCNqJu_71IdSxj6F2Ac4as-sAPqKGFOi_8UJSFUVjxh3PDK10STQnNCToOAgHUwcpAkZeNPXsjtPNxA"/>
+</div>
+</body></html>

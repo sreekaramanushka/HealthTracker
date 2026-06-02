@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f4f0ef",
+                      "surface-bright": "#fcf8f8",
+                      "on-surface": "#1c1b1b",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#e2e2e2",
+                      "on-tertiary-container": "#677f00",
+                      "on-surface-variant": "#444748",
+                      "inverse-primary": "#c6c6c7",
+                      "on-background": "#1c1b1b",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#ddd9d9",
+                      "inverse-surface": "#313030",
+                      "on-secondary-fixed": "#1b1b1b",
+                      "outline": "#747878",
+                      "on-tertiary-fixed": "#171e00",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#e2e2e2",
+                      "surface-tint": "#5d5f5f",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary": "#526600",
+                      "primary-container": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#aed500",
+                      "on-secondary-container": "#646464",
+                      "on-tertiary-fixed-variant": "#3d4d00",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#1a1c1c",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#ffffff",
+                      "on-secondary-fixed-variant": "#474747",
+                      "surface": "#fcf8f8",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e5e2e1",
+                      "neon-glow": "rgba(209, 255, 0, 0.4)",
+                      "surface-container-high": "#ebe7e7",
+                      "glass-fill": "rgba(255, 255, 255, 0.7)",
+                      "primary": "#5d5f5f",
+                      "background": "#fcf8f8",
+                      "secondary": "#5e5e5e",
+                      "surface-container": "#f1edec",
+                      "tertiary-fixed": "#c7f300",
+                      "on-primary-container": "#747676",
+                      "glass-border": "rgba(0, 0, 0, 0.05)",
+                      "outline-variant": "#c4c7c8",
+                      "on-error": "#ffffff",
+                      "subtle-gray": "#BCBCBC",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-primary-fixed-variant": "#454747",
+                      "secondary-fixed-dim": "#c6c6c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "card-padding": "32px",
+                      "section-gap": "80px",
+                      "container-max": "1200px",
+                      "gutter": "24px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "metric-xl": ["Sora"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Sora"],
+                      "display-lg": ["Sora"],
+                      "headline-lg": ["Sora"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Sora"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<aside class="h-screen fixed left-0 top-0 w-64 bg-surface border-r border-glass-border flex flex-col p-margin-mobile gap-unit z-50">
+<div class="px-4 py-6">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">GoBoult</span>
+</div>
+<div class="px-4 mb-8">
+<div class="flex items-center gap-3">
+<img alt="User profile" class="w-10 h-10 rounded-full border border-glass-border" data-alt="A close-up portrait of a fit, young professional man with a friendly expression, set against a blurred, minimalist architectural background. The lighting is soft and natural, emphasizing a clean and high-end lifestyle aesthetic. The color palette is dominated by neutral tones and soft whites, aligning with a premium health and performance brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADFlouxfoaMYaU7ynSgSU5YbWyr4jDHZGU8jVEewWfSr959l7_CYHbAO3wpOf8R92wZvym_O3f4d-PU1JHsGSrs-2qRR0mDAi8wMTr0Ikb-romY0M0aCEZ3hFfakfsq8AvYVFILbPBBrLNW9JeR-A_qjJngfPurGxzqUCtO6uPmzSau6SgZcdCeZJBoTaOumP1pqKJ2LXZaCTWGEpl48TOvoBCIOznqLYCGGmaE7zVE-WqQqbPCcM2Caj2C6YwcwxGX3ZhlWqdc88"/>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">Performance Metrics</p>
+<p class="font-body-md text-sm text-on-surface-variant">Premium Tier</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 bg-on-tertiary-container text-tertiary-fixed rounded-full p-4 shadow-[0_0_20px_rgba(199,243,0,0.25)]" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-caps text-label-caps">Daily Logs</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-caps text-label-caps">Nutrition</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="font-label-caps text-label-caps">Water Intake</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">bedtime</span>
+<span class="font-label-caps text-label-caps">Sleep Tracker</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calculate</span>
+<span class="font-label-caps text-label-caps">BMI Calculator</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<div class="mt-auto pt-8 border-t border-glass-border">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-error p-4 hover:bg-error-container/20 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</nav>
+</aside>
+<main class="ml-64 min-h-screen">
+<header class="sticky top-0 z-40 bg-glass-fill backdrop-blur-xl border-b border-glass-border shadow-[0_20px_40px_rgba(0,0,0,0.03)] flex justify-between items-center px-gutter py-4 w-full">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-neon-glow transition-all duration-300" placeholder="Search health logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-on-surface-variant hover:text-tertiary-fixed transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary-fixed rounded-full"></span>
+</button>
+<div class="h-8 w-px bg-glass-border"></div>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps">Oct 24, 2023</span>
+<button class="p-2 bg-surface-container-high rounded-full hover:bg-primary-fixed transition-all">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</div>
+</div>
+</header>
+<section class="max-w-container-max mx-auto p-gutter space-y-section-gap">
+<div class="flex flex-col gap-6">
+<div class="flex items-end justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Daily Health Logs</h1>
+<p class="text-on-surface-variant mt-2">Track and manage your performance metrics with precision.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex bg-surface-container-low rounded-full p-1 border border-glass-border">
+<button class="px-6 py-2 bg-primary-container shadow-sm rounded-full font-label-caps text-label-caps">All Logs</button>
+<button class="px-6 py-2 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps">Trends</button>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-lg p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.03)] overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-tertiary">filter_list</span>
+<span class="font-label-caps text-label-caps">Filter by Metric</span>
+</div>
+<div class="flex gap-2">
+<span class="px-4 py-1.5 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-semibold">Weight</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-semibold">Calories</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-semibold">Steps</span>
+</div>
+</div>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">download</span>
+<span class="font-label-caps text-label-caps">Export Data</span>
+</button>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-glass-border">
+<th class="pb-4 font-label-caps text-label-caps text-on-surface-variant opacity-70 px-4">Date &amp; Time</th>
+<th class="pb-4 font-label-caps text-label-caps text-on-surface-variant opacity-70 px-4">Metric</th>
+<th class="pb-4 font-label-caps text-label-caps text-on-surface-variant opacity-70 px-4">Value</th>
+<th class="pb-4 font-label-caps text-label-caps text-on-surface-variant opacity-70 px-4">Status</th>
+<th class="pb-4 font-label-caps text-label-caps text-on-surface-variant opacity-70 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-glass-border">
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4">
+<div class="flex flex-col">
+<span class="font-bold">Oct 24, 08:30 AM</span>
+<span class="text-xs text-on-surface-variant">Today</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">monitor_weight</span>
+</div>
+<span class="font-medium">Weight</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<span class="font-metric-xl text-2xl text-tertiary">74.2 <span class="text-sm font-normal text-on-surface-variant uppercase">kg</span></span>
+</td>
+<td class="py-5 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-on-tertiary-container/10 text-on-tertiary-container text-xs font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                                            Stable
+                                        </span>
+</td>
+<td class="py-5 px-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-full transition-all text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full transition-all text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4">
+<div class="flex flex-col">
+<span class="font-bold">Oct 23, 10:15 PM</span>
+<span class="text-xs text-on-surface-variant">Yesterday</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<span class="font-medium">Water Intake</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<span class="font-metric-xl text-2xl text-on-surface">2.4 <span class="text-sm font-normal text-on-surface-variant uppercase">L</span></span>
+</td>
+<td class="py-5 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                            Target Met
+                                        </span>
+</td>
+<td class="py-5 px-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-full transition-all text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full transition-all text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4">
+<div class="flex flex-col">
+<span class="font-bold">Oct 23, 07:00 AM</span>
+<span class="text-xs text-on-surface-variant">Yesterday</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined text-[20px]">bedtime</span>
+</div>
+<span class="font-medium">Sleep</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<span class="font-metric-xl text-2xl text-on-surface">7h 20m</span>
+</td>
+<td class="py-5 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                                            Excellent
+                                        </span>
+</td>
+<td class="py-5 px-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-full transition-all text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full transition-all text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 px-4">
+<div class="flex flex-col">
+<span class="font-bold">Oct 22, 06:15 PM</span>
+<span class="text-xs text-on-surface-variant">2 days ago</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<span class="font-medium">Calories</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<span class="font-metric-xl text-2xl text-on-surface">1,850 <span class="text-sm font-normal text-on-surface-variant uppercase">kcal</span></span>
+</td>
+<td class="py-5 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 text-orange-700 text-xs font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                                            High
+                                        </span>
+</td>
+<td class="py-5 px-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-full transition-all text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full transition-all text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-gutter pointer-events-none">
+<div class="pointer-events-auto w-full max-w-lg glass-card rounded-lg p-card-padding shadow-[0_40px_80px_rgba(0,0,0,0.15)] ring-1 ring-glass-border">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md">Add New Log</h2>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant px-1">Log Type</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl border border-tertiary-fixed bg-tertiary-container/30 text-on-tertiary-container shadow-[0_0_15px_rgba(199,243,0,0.1)]" type="button">
+<span class="material-symbols-outlined">monitor_weight</span>
+<span class="text-xs font-bold uppercase">Weight</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl border border-glass-border hover:border-tertiary transition-all" type="button">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="text-xs font-bold uppercase">Calories</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl border border-glass-border hover:border-tertiary transition-all" type="button">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="text-xs font-bold uppercase">Water</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant px-1">Value</label>
+<input class="w-full bg-white border border-subtle-gray rounded-full px-6 py-3 focus:border-on-surface focus:ring-2 focus:ring-neon-glow transition-all outline-none" placeholder="0.0" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant px-1">Unit</label>
+<select class="w-full bg-white border border-subtle-gray rounded-full px-6 py-3 focus:border-on-surface focus:ring-2 focus:ring-neon-glow transition-all outline-none appearance-none">
+<option>kg</option>
+<option>lbs</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant px-1">Date &amp; Time</label>
+<div class="relative">
+<input class="w-full bg-white border border-subtle-gray rounded-full px-6 py-3 focus:border-on-surface focus:ring-2 focus:ring-neon-glow transition-all outline-none" type="datetime-local"/>
+<span class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_today</span>
+</div>
+</div>
+<div class="pt-4 flex gap-4">
+<button class="flex-1 bg-surface-container-high text-on-surface font-label-caps text-label-caps py-4 rounded-full hover:bg-primary-fixed transition-all" type="button">Discard</button>
+<button class="flex-1 bg-on-surface text-white font-label-caps text-label-caps py-4 rounded-full hover:ring-2 hover:ring-tertiary-fixed transition-all shadow-lg" type="submit">Save Log</button>
+</div>
+</form>
+</div>
+</div>
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-tertiary-fixed text-on-tertiary-fixed rounded-full shadow-[0_0_30px_rgba(199,243,0,0.5)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 z-50">
+<span class="material-symbols-outlined text-[32px] font-bold">add</span>
+</button>
+</body></html>

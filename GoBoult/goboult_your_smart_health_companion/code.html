@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f4f0ef",
+                    "surface-bright": "#fcf8f8",
+                    "on-surface": "#1c1b1b",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#e2e2e2",
+                    "on-tertiary-container": "#677f00",
+                    "on-surface-variant": "#444748",
+                    "inverse-primary": "#c6c6c7",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#ddd9d9",
+                    "inverse-surface": "#313030",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "outline": "#747878",
+                    "on-tertiary-fixed": "#171e00",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#e2e2e2",
+                    "surface-tint": "#5d5f5f",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-variant": "#e5e2e1",
+                    "tertiary": "#526600",
+                    "primary-container": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#aed500",
+                    "on-secondary-container": "#646464",
+                    "on-tertiary-fixed-variant": "#3d4d00",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#1a1c1c",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#ffffff",
+                    "on-secondary-fixed-variant": "#474747",
+                    "surface": "#fcf8f8",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e5e2e1",
+                    "neon-glow": "rgba(209, 255, 0, 0.4)",
+                    "surface-container-high": "#ebe7e7",
+                    "glass-fill": "rgba(255, 255, 255, 0.7)",
+                    "primary": "#5d5f5f",
+                    "background": "#fcf8f8",
+                    "secondary": "#5e5e5e",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed": "#c7f300",
+                    "on-primary-container": "#747676",
+                    "glass-border": "rgba(0, 0, 0, 0.05)",
+                    "outline-variant": "#c4c7c8",
+                    "on-error": "#ffffff",
+                    "subtle-gray": "#BCBCBC",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#454747",
+                    "secondary-fixed-dim": "#c6c6c6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "card-padding": "32px",
+                    "section-gap": "80px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "metric-xl": ["Sora"],
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "display-lg": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .neon-glow-btn:hover {
+        box-shadow: 0 0 20px rgba(199, 243, 0, 0.6);
+        border-color: #c7f300;
+      }
+      .activity-ring {
+        transition: stroke-dashoffset 1s ease-in-out;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto bg-glass-fill border-b border-glass-border backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">GoBoult</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-tertiary-fixed font-bold font-label-caps text-label-caps" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-medium font-label-caps text-label-caps hover:text-tertiary-fixed transition-all duration-300" href="#">Features</a>
+<a class="text-on-surface-variant font-medium font-label-caps text-label-caps hover:text-tertiary-fixed transition-all duration-300" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-neon-glow text-body-md font-body-md" placeholder="Search analytics..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-on-surface hover:text-tertiary-fixed transition-all cursor-pointer">notifications</span>
+<img alt="User profile" class="w-10 h-10 rounded-full border border-glass-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnLhpw4b16bTf3DvdlpgKa1TRwkU8E88muWwykIYXMTsht9CTxAyAH7mCDvio6LPrO0la5cq_wHNRQ_6KYRRegHNEmRoPlv0zvzm12xNQ36dazZL1PEDfBpmotVkaC6NoKRTZ5fN3MyoEqWiVvlD81QZ3tXhPVonkp1YLQD_5iefc1tGbYZ_f2n86D5ixD2P89taL2fQXMDPpPkBlqUNRETH9ceOxUk_xR-fvr3xeZOQjBuyTDQMCs0G7DDPCMzF6UtZdZE1S5Ato"/>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<!-- Hero Section -->
+<section class="flex flex-col lg:flex-row items-center justify-between py-section-gap gap-12">
+<div class="lg:w-1/2 space-y-unit">
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-widest">Performance Metrics</span>
+<h1 class="font-display-lg text-display-lg lg:text-[64px] leading-tight text-on-surface max-w-xl">Your Smart Health <span class="text-tertiary-fixed drop-shadow-sm">Companion</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md pb-8">
+                    Elevate your physical potential with AI-driven analytics that transform complex biological data into actionable daily insights.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-on-surface text-on-tertiary font-label-caps text-label-caps rounded-full neon-glow-btn transition-all duration-300 flex items-center gap-2">
+                        Get Started <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="px-8 py-4 bg-transparent border border-on-surface text-on-surface font-label-caps text-label-caps rounded-full hover:bg-on-surface hover:text-white transition-all duration-300">
+                        View Dashboard
+                    </button>
+</div>
+</div>
+<div class="lg:w-1/2 relative group">
+<div class="absolute -inset-4 bg-tertiary-fixed opacity-10 blur-3xl rounded-full"></div>
+<div class="glass-card p-card-padding rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.03)] relative overflow-hidden">
+<img alt="Health Analytics Preview" class="w-full h-auto rounded-lg shadow-sm" data-alt="A futuristic and minimalist digital health dashboard interface displayed on a sleek glass tablet. The screen shows vibrant neon green activity rings, thin line charts for pulse and energy, and clean white typography against a soft light-mode background. The lighting is high-key and modern, emphasizing a premium performance medical technology aesthetic with soft diffused shadows and glassmorphic depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz3B5OdqUtrb9KZabJUo-YshVl-Xhk7LQazGfoz_HsmD9WhpaQOy0VAKqHT51jfD-4Kd06wggSVhDVAByvyIogEwAZw6rltH11E9sUuLrCcB3QMMuegiA6yd-eFVnRHoYr-M2-x11FbTh-WuLvxQpSJucSPe5mjOCsKX9DJyck1xzjlm-fxRLCqH2Nfd3ZwnRKlFahI1X03e1iAHyFPTc0Tixp3sCDWACBKUERFdoGY8vhN7BRsMhwLNTGl5121AWBDbdILJFfZ8A"/>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-section-gap">
+<div class="text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Integrated Wellness Ecosystem</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Every metric matters. Track the core pillars of your vitality with medical-grade precision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Step Tracking -->
+<div class="glass-card p-card-padding rounded-lg hover:border-tertiary-fixed transition-all group">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-fixed">footprint</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Step Tracking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time gait analysis and step counts with precision GPS integration for every stride.</p>
+</div>
+<!-- Sleep Monitoring -->
+<div class="glass-card p-card-padding rounded-lg hover:border-tertiary-fixed transition-all group">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-surface">bedtime</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Sleep Monitoring</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Analyze REM cycles and deep sleep efficiency to wake up restored and fully optimized.</p>
+</div>
+<!-- Water Intake -->
+<div class="glass-card p-card-padding rounded-lg hover:border-tertiary-fixed transition-all group">
+<div class="w-12 h-12 bg-tertiary-fixed/20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary">water_drop</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Water Intake</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Smart hydration reminders based on your activity levels and metabolic requirements.</p>
+</div>
+<!-- Calories Tracker -->
+<div class="glass-card p-card-padding rounded-lg hover:border-tertiary-fixed transition-all group">
+<div class="w-12 h-12 bg-on-surface rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white">restaurant</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Calories Tracker</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Advanced macro breakdown with photo-recognition meal logging for absolute transparency.</p>
+</div>
+<!-- BMI Analysis -->
+<div class="glass-card p-card-padding rounded-lg hover:border-tertiary-fixed transition-all group">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-surface">calculate</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">BMI Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Track body composition trends over time with dynamic bio-metric visualization tools.</p>
+</div>
+<!-- Health Reports -->
+<div class="glass-card p-card-padding rounded-lg hover:border-tertiary-fixed transition-all group">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-fixed">insights</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Health Reports</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Export professional-grade medical summaries to share with your primary care provider.</p>
+</div>
+</div>
+</section>
+<!-- Analytics Preview -->
+<section class="py-section-gap glass-card rounded-xl p-card-padding flex flex-col lg:flex-row gap-12 overflow-hidden relative">
+<div class="lg:w-1/3">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Real-Time Core Performance</h2>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">bolt</span>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Daily Energy</p>
+<p class="font-headline-md text-headline-md">84%</p>
+</div>
+</div>
+<span class="text-tertiary font-bold">+5% vs Yesterday</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">favorite</span>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Heart Rate</p>
+<p class="font-headline-md text-headline-md">72 BPM</p>
+</div>
+</div>
+<span class="text-on-surface-variant font-medium">Optimal Range</span>
+</div>
+</div>
+<button class="mt-8 w-full py-4 bg-on-surface text-white rounded-full font-label-caps text-label-caps">Expand Analytics</button>
+</div>
+<div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-glass-border flex flex-col items-center justify-center">
+<!-- Activity Ring Mock -->
+<svg class="w-48 h-48 transform -rotate-90">
+<circle class="text-tertiary/10" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-tertiary-fixed activity-ring" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502" stroke-dashoffset="125" stroke-linecap="round" stroke-width="12"></circle>
+<text alignment-baseline="middle" class="font-metric-xl text-metric-xl fill-on-surface" text-anchor="middle" transform="rotate(90)" x="96" y="-96">75%</text>
+</svg>
+<p class="mt-4 font-label-caps text-label-caps text-on-surface-variant uppercase">Movement Goal</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-glass-border">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">VITALITY TREND</p>
+<div class="h-40 flex items-end gap-2">
+<div class="w-full bg-surface-container-high rounded-t-full h-1/2"></div>
+<div class="w-full bg-surface-container-high rounded-t-full h-3/4"></div>
+<div class="w-full bg-tertiary-fixed rounded-t-full h-full shadow-[0_0_15px_rgba(199,243,0,0.4)]"></div>
+<div class="w-full bg-surface-container-high rounded-t-full h-2/3"></div>
+<div class="w-full bg-surface-container-high rounded-t-full h-1/2"></div>
+<div class="w-full bg-surface-container-high rounded-t-full h-5/6"></div>
+<div class="w-full bg-on-surface rounded-t-full h-2/3"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-label-caps text-on-surface-variant">
+<span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-section-gap">
+<h2 class="font-headline-lg text-headline-lg text-on-surface text-center mb-12">Performance Testimonials</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-card-padding rounded-lg">
+<div class="flex gap-1 mb-4">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic mb-6">"GoBoult has completely redefined how I approach my marathon training. The precision is unmatched in any other consumer wearable."</p>
+<div class="flex items-center gap-3">
+<img alt="Marcus" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLjG0GwSg2UhKEWTmWhDPjpz_E86W0I2jbQ56Sm-J0fN12k60-OBP1zs-I0_WQSWzM01fnSSt-3qoGXQ29HlaABfp_uubE-XOhZUirSMtQk6mM_VmpP_dE8uVSxo2MrobVh2z-74GFYNYZX8y6b0IJ-n664sJSe5ut2vwg2sa5mXhPsh6EAh1mbhzGWSMXYyka9GMvhgjAxwQqShecEp8f25JkrlWubcNvrFaPOc9mj0MpfVZeExbbYqRnN-P-pQbhnsAjmPm52IQ"/>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">Marcus Thorne</p>
+<p class="text-[10px] text-on-surface-variant">Elite Athlete</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-card-padding rounded-lg border-tertiary-fixed">
+<div class="flex gap-1 mb-4">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic mb-6">"The glassmorphic UI isn't just beautiful—it's functional. I can see all my vitals at a single glance without any clutter."</p>
+<div class="flex items-center gap-3">
+<img alt="Elena" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0fEjDT0NgHZHWo7vl8H_Zar5_3tBCzDdbg3VxJZ8jThMY-Astix2AdFrmsIhmmfOPZeNb-vae00mwOXrY-dHBIi6XTOUKjF10-B-1dXD4hhr4L2ZOfW2P1I0D4rHI1VFCp0n4dMp2ZWC8fmg8Xz5OX6f7HQ5noLNg8qoYRahKhEXb65uRckX9po6dSsegVBfUG2FRu84r8__QoXdj_419wO7Ug1-CgGHiFqMR-Llcht8VUoB6KdfD5AnqfGfjTKAMbBg7bfYa71s"/>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">Elena Rodriguez</p>
+<p class="text-[10px] text-on-surface-variant">UI/UX Designer</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-card-padding rounded-lg">
+<div class="flex gap-1 mb-4">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic mb-6">"Medical data used to be scary. Now it's motivating. GoBoult makes health tracking feel like a premium lifestyle experience."</p>
+<div class="flex items-center gap-3">
+<img alt="David" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUBFk6XMTApJdl2bAa7U_1-u03aMOlXIMFfIs_qpWKnl1FcBoKUKv9jOnrvylWhl8oAsiv1NyycRB53FqW5PWPZ9oX5UEDHsT4uzqbR2TMWdSR3VGIn2oidQNJJ1wcDa6v8hL2mADDnd0PXVdQORsl4lrMV2sxNADdISAnxLNL3u2-AT_dgC5nIO6ZKNDVqt5MQe7M5I-trFvfveWtnP-2RPeE0jWncMPFhkIpMVWLEhbW1_H6927wIIf0n91A7XDbYqOuBgYxvEw"/>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">Dr. David Chen</p>
+<p class="text-[10px] text-on-surface-variant">Health Consultant</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-on-surface text-surface py-16 mt-section-gap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="space-y-6">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-white">GoBoult</span>
+<p class="text-surface-variant/70 font-body-md">Precision analytics for the modern high-performer. Experience the future of health.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined hover:text-tertiary-fixed cursor-pointer">public</span>
+<span class="material-symbols-outlined hover:text-tertiary-fixed cursor-pointer">share</span>
+<span class="material-symbols-outlined hover:text-tertiary-fixed cursor-pointer">mail</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-white mb-6 uppercase">Product</h4>
+<ul class="space-y-3 text-surface-variant/70 font-body-md">
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Overview</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Integrations</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-white mb-6 uppercase">Resources</h4>
+<ul class="space-y-3 text-surface-variant/70 font-body-md">
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">API Reference</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Health Blog</a></li>
+<li><a class="hover:text-tertiary-fixed transition-colors" href="#">Community</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-white mb-6 uppercase">Newsletter</h4>
+<p class="text-surface-variant/70 font-body-md mb-4">Stay updated with our latest health insights.</p>
+<div class="flex gap-2">
+<input class="bg-surface/10 border border-white/20 rounded-full px-4 py-2 text-white w-full" placeholder="Email" type="email"/>
+<button class="bg-tertiary-fixed p-2 rounded-full text-on-tertiary-fixed">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-16 pt-8 border-t border-white/10 flex justify-between items-center text-[12px] text-surface-variant/50 font-label-caps">
+<p>© 2024 GoBoult Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-tertiary-fixed text-on-tertiary-fixed rounded-full shadow-[0_10px_30px_rgba(199,243,0,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[100]">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+</body></html>

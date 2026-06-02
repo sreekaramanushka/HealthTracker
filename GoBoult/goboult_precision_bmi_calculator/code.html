@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GoBoult - BMI Calculator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-bright": "#fcf8f8",
+                        "on-surface": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#e2e2e2",
+                        "on-tertiary-container": "#677f00",
+                        "on-surface-variant": "#444748",
+                        "inverse-primary": "#c6c6c7",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#ddd9d9",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "outline": "#747878",
+                        "on-tertiary-fixed": "#171e00",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#e2e2e2",
+                        "surface-tint": "#5d5f5f",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary": "#526600",
+                        "primary-container": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#aed500",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-fixed-variant": "#3d4d00",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "surface": "#fcf8f8",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e5e2e1",
+                        "neon-glow": "rgba(209, 255, 0, 0.4)",
+                        "surface-container-high": "#ebe7e7",
+                        "glass-fill": "rgba(255, 255, 255, 0.7)",
+                        "primary": "#5d5f5f",
+                        "background": "#fcf8f8",
+                        "secondary": "#5e5e5e",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed": "#c7f300",
+                        "on-primary-container": "#747676",
+                        "glass-border": "rgba(0, 0, 0, 0.05)",
+                        "outline-variant": "#c4c7c8",
+                        "on-error": "#ffffff",
+                        "subtle-gray": "#BCBCBC",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "card-padding": "32px",
+                        "section-gap": "80px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "metric-xl": ["Sora"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bmi-gauge-path {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 70;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- SideNavBar -->
+<aside class="h-screen fixed left-0 top-0 w-64 bg-surface dark:bg-surface-dim border-r border-glass-border shadow-sm flex flex-col h-full p-margin-mobile gap-unit hidden md:flex z-40">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">GoBoult</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Performance Metrics</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow overflow-y-auto">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-caps text-label-caps">Daily Logs</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-caps text-label-caps">Nutrition</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="font-label-caps text-label-caps">Water Intake</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">bedtime</span>
+<span class="font-label-caps text-label-caps">Sleep Tracker</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-4 bg-on-tertiary-container text-tertiary-fixed rounded-full p-4 shadow-[0_0_20px_rgba(199,243,0,0.25)] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calculate</span>
+<span class="font-label-caps text-label-caps">BMI Calculator</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-label-caps text-label-caps">Goals</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-glass-border pt-4">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto bg-glass-fill backdrop-blur-xl border-b border-glass-border shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-neon-glow w-64 font-body-md text-on-surface" placeholder="Search metrics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-on-surface-variant hover:text-tertiary-fixed transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary-fixed rounded-full shadow-[0_0_10px_rgba(199,243,0,0.8)]"></span>
+</button>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="font-label-caps text-label-caps text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Premium Tier</p>
+</div>
+<img alt="User profile" class="w-10 h-10 rounded-full border border-glass-border object-cover" data-alt="A high-quality professional portrait of a woman in her late 20s with athletic features, smiling confidently at the camera. The background is a clean, bright, minimalist health clinic interior with soft, high-key lighting. The overall aesthetic is polished, premium, and focused on modern lifestyle and wellness, with crisp details and a warm, inviting atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQOg9SC4bN-OCelDVtECyyI8natx_Am2sySboLiz5ybRPgkR4cqws6pRGFovy44T0xVnDXk-1iQbQ89zxPn8TUyLEvaNf5c2msBJQvAN4EE0no4DmsX2PtPIfheiymsExW0GE-4M2KulXVp3etCMHYjb6Nm4uCDcN5mMFNtGN3f95TroQgrKnUdRpC2jXJ7QIYQPlbg8UedM3ARsTrf6BcQULEt9qtX5Ly3lNCCSrxA9__Q1-injn3YWvXJj28FXSzwYkb7CGDuKk"/>
+</div>
+</div>
+</header>
+<section class="max-w-container-max mx-auto p-gutter pt-8">
+<div class="mb-section-gap">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">BMI Calculator</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Precision metrics for elite health monitoring. Calculate your Body Mass Index using our clinical-grade algorithm.</p>
+</div>
+<!-- Bento Grid Layout for Calculator -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Inputs Section (Left/Top) -->
+<div class="lg:col-span-7 space-y-gutter">
+<div class="glass-fill backdrop-blur-[20px] bg-white rounded-lg p-card-padding border border-glass-border shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<h3 class="font-headline-md text-headline-md mb-8">Personal Parameters</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Gender Toggle -->
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Gender Selection</label>
+<div class="flex gap-2">
+<button class="flex-1 py-4 rounded-full border-2 border-on-surface bg-on-surface text-white font-bold transition-all">Male</button>
+<button class="flex-1 py-4 rounded-full border border-subtle-gray hover:border-on-surface transition-all">Female</button>
+</div>
+</div>
+<!-- Age Input -->
+<div class="space-y-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Age (Years)</label>
+<div class="relative">
+<input class="w-full bg-white border border-subtle-gray rounded-full py-4 px-6 focus:ring-2 focus:ring-neon-glow focus:border-on-surface outline-none transition-all font-metric-xl text-metric-xl" type="number" value="28"/>
+<div class="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-on-surface">expand_less</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-on-surface">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Height Slider -->
+<div class="md:col-span-2 space-y-4">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Height (cm)</label>
+<span class="font-metric-xl text-metric-xl text-tertiary">178 <span class="text-body-md font-normal text-on-surface-variant">cm</span></span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-full appearance-none cursor-pointer accent-on-surface" max="250" min="100" type="range" value="178"/>
+<div class="flex justify-between text-[10px] text-on-surface-variant font-bold">
+<span>100 CM</span>
+<span>250 CM</span>
+</div>
+</div>
+<!-- Weight Slider -->
+<div class="md:col-span-2 space-y-4">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Weight (kg)</label>
+<span class="font-metric-xl text-metric-xl text-tertiary">72.4 <span class="text-body-md font-normal text-on-surface-variant">kg</span></span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-full appearance-none cursor-pointer accent-on-surface" max="200" min="30" type="range" value="72"/>
+<div class="flex justify-between text-[10px] text-on-surface-variant font-bold">
+<span>30 KG</span>
+<span>200 KG</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-12 bg-on-surface text-white py-6 rounded-full font-headline-md hover:ring-2 hover:ring-tertiary-fixed transition-all flex items-center justify-center gap-3 group">
+                            Recalculate Metrics
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+<!-- Recommendation Card -->
+<div class="glass-fill border border-glass-border rounded-lg p-card-padding bg-white relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">verified_user</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+                            Health Insights
+                        </h4>
+<p class="font-body-md text-on-surface-variant mb-6">Based on your metrics, you are in the <strong>Optimal Health Zone</strong>. Your body composition indicates high cardiovascular efficiency and balanced metabolic rate.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl border border-glass-border">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">RECOMMENDED CALORIES</p>
+<p class="font-headline-md text-headline-md text-on-surface">2,450 <span class="text-body-md">kcal</span></p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-glass-border">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-1">IDEAL WEIGHT RANGE</p>
+<p class="font-headline-md text-headline-md text-on-surface">68 - 76 <span class="text-body-md">kg</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Gauge Section (Right/Bottom) -->
+<div class="lg:col-span-5 space-y-gutter">
+<!-- Gauge Card -->
+<div class="glass-fill backdrop-blur-[20px] bg-white rounded-lg p-card-padding border border-glass-border shadow-[0_20px_40px_rgba(0,0,0,0.03)] flex flex-col items-center text-center">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-8">BMI Analysis</h3>
+<div class="relative w-64 h-64 flex items-center justify-center mb-6">
+<!-- SVG Gauge -->
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<circle class="text-tertiary-fixed opacity-10" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-tertiary-fixed drop-shadow-[0_0_12px_rgba(199,243,0,0.6)]" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="70" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-metric-xl text-[56px] text-on-surface leading-none">22.8</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-2">HEALTHY</span>
+</div>
+</div>
+<div class="w-full space-y-6">
+<div class="flex justify-between items-end">
+<div class="text-left">
+<p class="font-label-caps text-[10px] text-on-surface-variant">CURRENT STATUS</p>
+<p class="font-headline-md text-headline-md text-on-tertiary-container">Normal</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-surface-variant">PERCENTILE</p>
+<p class="font-headline-md text-headline-md">Top 12%</p>
+</div>
+</div>
+<!-- Scale Legend -->
+<div class="pt-6 border-t border-glass-border">
+<div class="flex h-3 w-full bg-surface-container rounded-full overflow-hidden mb-3">
+<div class="h-full bg-blue-400 w-[15%]"></div>
+<div class="h-full bg-tertiary-fixed w-[40%] relative">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-5 bg-on-surface rounded-full"></div>
+</div>
+<div class="h-full bg-yellow-400 w-[20%]"></div>
+<div class="h-full bg-error w-[25%]"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-on-surface-variant px-1">
+<span>UNDER</span>
+<span>IDEAL</span>
+<span>OVER</span>
+<span>OBESE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Metric Cards (Bento style) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-fill bg-white p-6 rounded-lg border border-glass-border shadow-sm">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-2">BMR</p>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md">1,740</span>
+<span class="text-[10px] text-on-surface-variant">KCAL</span>
+</div>
+<div class="mt-4 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[65%] h-full bg-on-surface"></div>
+</div>
+</div>
+<div class="glass-fill bg-white p-6 rounded-lg border border-glass-border shadow-sm">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-2">BODY FAT</p>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-tertiary">14.2</span>
+<span class="text-[10px] text-on-surface-variant">%</span>
+</div>
+<div class="mt-4 h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[45%] h-full bg-tertiary-fixed"></div>
+</div>
+</div>
+</div>
+<!-- Context Image -->
+<div class="relative h-48 rounded-lg overflow-hidden border border-glass-border group">
+<img alt="Healthy lifestyle" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A clean, cinematic shot of a modern, minimalist gym interior during golden hour. Large floor-to-ceiling windows reveal a soft urban sunset. In the foreground, high-end, matte-black exercise equipment is perfectly arranged on a polished concrete floor. The lighting is dramatic and moody, yet bright and aspirational, emphasizing a premium health and fitness lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpjksXQI7uzbmA-cW8PGB9ExodlGGn-n2tfBEsy9G0Gy2--A0UIuex9X29ulAgtvclZIqmLk13mKufFg70Ks24xap6FnwSb78RKd1F3Dm4zhTl1x41t9VoPxvemOVR51s2kGKbaJRrdAKZmEsrVswXWH5UB-O2inQdeWGzllAwlfTFWYStoEfn3nRaeoOYGttsnXHWoFESmIbMwbQ_Q6HLuWULHJCg0ls3Au_cODRdKvV-XMIaFY5xuBNEDJmvm2TTi3O-S3UQpEU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<p class="text-white font-label-caps text-label-caps">PRO TIP</p>
+<p class="text-white font-body-md text-body-md font-medium">Muscle mass affects BMI. Use DEXA scans for higher precision.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contextual Help / Footer -->
+<footer class="max-w-container-max mx-auto px-gutter py-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter items-start">
+<div class="space-y-4">
+<div class="w-12 h-12 bg-on-surface rounded-full flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined">info</span>
+</div>
+<h5 class="font-headline-md text-headline-md">What is BMI?</h5>
+<p class="font-body-md text-on-surface-variant">Body Mass Index (BMI) is a clinical measurement of person's weight with respect to their height. It is more of an indicator than a direct measurement of a person's total body fat.</p>
+</div>
+<div class="space-y-4">
+<div class="w-12 h-12 bg-on-tertiary-container rounded-full flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h5 class="font-headline-md text-headline-md">Metric Reliability</h5>
+<p class="font-body-md text-on-surface-variant">While accurate for most adults, BMI may overestimate body fat in athletes and others who have a muscular build, or underestimate it in older persons who have lost muscle mass.</p>
+</div>
+<div class="space-y-4">
+<div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">security</span>
+</div>
+<h5 class="font-headline-md text-headline-md">Data Privacy</h5>
+<p class="font-body-md text-on-surface-variant">Your health metrics are processed using end-to-end encryption. GoBoult never shares your personal biometric data with third-party providers or insurance companies.</p>
+</div>
+</div>
+<div class="mt-section-gap pt-8 border-t border-glass-border flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.2em] uppercase">© 2024 GoBoult Laboratory Systems</p>
+<div class="flex gap-8">
+<a class="text-[10px] font-bold text-on-surface-variant tracking-[0.2em] uppercase hover:text-on-surface transition-colors" href="#">Privacy</a>
+<a class="text-[10px] font-bold text-on-surface-variant tracking-[0.2em] uppercase hover:text-on-surface transition-colors" href="#">Clinical Terms</a>
+<a class="text-[10px] font-bold text-on-surface-variant tracking-[0.2em] uppercase hover:text-on-surface transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Mobile Navigation (Bottom Bar) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-glass-fill backdrop-blur-xl border-t border-glass-border px-margin-mobile py-4 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">event_note</span>
+</a>
+<div class="relative -top-8">
+<button class="w-16 h-16 bg-on-surface text-tertiary-fixed rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.2)] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calculate</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">insights</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+</body></html>

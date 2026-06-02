@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f4f0ef",
+                    "surface-bright": "#fcf8f8",
+                    "on-surface": "#1c1b1b",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#e2e2e2",
+                    "on-tertiary-container": "#677f00",
+                    "on-surface-variant": "#444748",
+                    "inverse-primary": "#c6c6c7",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#ddd9d9",
+                    "inverse-surface": "#313030",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "outline": "#747878",
+                    "on-tertiary-fixed": "#171e00",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#e2e2e2",
+                    "surface-tint": "#5d5f5f",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-variant": "#e5e2e1",
+                    "tertiary": "#526600",
+                    "primary-container": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#aed500",
+                    "on-secondary-container": "#646464",
+                    "on-tertiary-fixed-variant": "#3d4d00",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#1a1c1c",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#ffffff",
+                    "on-secondary-fixed-variant": "#474747",
+                    "surface": "#fcf8f8",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e5e2e1",
+                    "neon-glow": "rgba(209, 255, 0, 0.4)",
+                    "surface-container-high": "#ebe7e7",
+                    "glass-fill": "rgba(255, 255, 255, 0.7)",
+                    "primary": "#5d5f5f",
+                    "background": "#fcf8f8",
+                    "secondary": "#5e5e5e",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed": "#c7f300",
+                    "on-primary-container": "#747676",
+                    "glass-border": "rgba(0, 0, 0, 0.05)",
+                    "outline-variant": "#c4c7c8",
+                    "on-error": "#ffffff",
+                    "subtle-gray": "#BCBCBC",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#454747",
+                    "secondary-fixed-dim": "#c6c6c6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "card-padding": "32px",
+                    "section-gap": "80px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "metric-xl": ["Sora"],
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Sora"],
+                    "display-lg": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Sora"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(209, 255, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- SideNavBar -->
+<aside class="hidden md:flex h-screen fixed left-0 top-0 w-64 bg-surface dark:bg-surface-dim border-r border-glass-border flex-col h-full p-margin-mobile gap-unit shadow-sm z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">GoBoult</h1>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-4 bg-on-tertiary-container text-tertiary-fixed rounded-full p-4 shadow-[0_0_20px_rgba(199,243,0,0.25)] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-glass-border pt-4 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEt7jPQe1W71xG18z21G6barOyF7LutVR9D27Mvi7SeTKEDqJbzdpvOrTjN9oJM3ctjcLouQ0D7skVCV1754Xo9CzOLBv8Arq8knTmvm9676pFxzEaabmemDPDOhCYcZL7Ck9nuPg2P2tcbKMH1BgeHIExv66SMR8kyXfajpQeZ38hl2Mw-7Xj3Wee8pbjMWIkyPKyHwO_wECorjw0L4GdBuzRDhAASQpet0mkuJw40D564kxpxR5bYMEQawxn0nD--rYNomXANfU"/>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">PREMIUM TIER</p>
+<p class="font-headline-md text-sm font-bold">Alex Johnson</p>
+</div>
+</div>
+</aside>
+<main class="md:ml-64 min-h-screen relative">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto bg-glass-fill dark:bg-surface-container-lowest border-b border-glass-border backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-high rounded-full px-4 py-2 flex items-center gap-2 border border-glass-border focus-within:ring-2 focus-within:ring-neon-glow transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-body-md w-48 md:w-64" placeholder="Search metrics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-tertiary-fixed transition-all duration-300">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-glass-border">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDttP_UduZF7u5kjTlqW92sL0CzD-pXTQ-gmP0Ml9CU6fHaNvEECsvjwMi4xgGuigAPIfhsk0BP9Kp6f11MbTDMJvtpsZABDs4dcEqbPz9iFY95vyh4IPjCRzV9w_fe61qnEMXZSw3xRZzKLVm1CcQAziZskBEmJPIt55Q1FXH7ywZ-1dEURj78hEUuFKn622lZX0iBmW3mK3APRbbXd3A6UNgdbuYg_lL9iHPHyNyG6qZZCLuSZ7gFYhRPlVO0wqz6QXTPNMwsz2o"/>
+</div>
+</div>
+</header>
+<div class="max-w-container-max mx-auto p-gutter pb-24">
+<!-- Page Header -->
+<div class="mb-10">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Account Management</h2>
+<p class="font-body-lg text-on-surface-variant">Optimize your personal performance and platform preferences.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Profile & Stats -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Profile Card -->
+<section class="glass-card rounded-lg p-card-padding">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border-4 border-tertiary-fixed overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A professional, high-resolution portrait of a fit individual with a confident smile, set against a clean, minimalist studio background. The lighting is bright and airy, reflecting a modern light-mode health app aesthetic. The color palette is dominated by soft whites and subtle grays, accented by a glowing neon green ring around the circular frame of the image." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSIGXCIWxM5A5JU4qvlQLxrI8O2zsF3fj3UGEQ5U6c0ojYEQkQnN3TDiIpIOOkfay_juWDaVYRRgfNVN91UDeXCdZFHBtESON60WczQP1BOQx0oiy-EHH5MEIKnK7AC3t-isl3YfbCd7xZnZ0FpkiNn1iCsJkLGL6S4FxRVpUwNmoIwzILbpFKiuTJ1uhIOlCfiE7v7bvD6Kl1tSh6_R1U4YC2_87dO0Fr70uotAdT09OkuNDkCLqUAJhfi3m34xKrL0eltPiFJAQ"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-on-surface text-white rounded-full p-2 shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+<div class="flex-1 w-full">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md">Personal Information</h3>
+<button class="bg-on-surface text-white px-6 py-2 rounded-full font-label-caps text-label-caps hover:ring-2 hover:ring-tertiary-fixed transition-all">SAVE CHANGES</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="font-label-caps text-[10px] text-on-surface-variant">FULL NAME</label>
+<input class="w-full bg-white border border-subtle-gray rounded px-4 py-2 font-body-md" type="text" value="Alex Johnson"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-[10px] text-on-surface-variant">EMAIL ADDRESS</label>
+<input class="w-full bg-white border border-subtle-gray rounded px-4 py-2 font-body-md" type="email" value="alex.j@goboult.com"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-[10px] text-on-surface-variant">PHONE NUMBER</label>
+<input class="w-full bg-white border border-subtle-gray rounded px-4 py-2 font-body-md" type="tel" value="+1 (555) 0123"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-[10px] text-on-surface-variant">LOCATION</label>
+<input class="w-full bg-white border border-subtle-gray rounded px-4 py-2 font-body-md" type="text" value="San Francisco, CA"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card rounded-lg p-6 border-l-4 border-tertiary-fixed">
+<span class="material-symbols-outlined text-tertiary mb-2">fitness_center</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">TOTAL WORKOUTS</p>
+<p class="font-metric-xl text-metric-xl mt-1">128</p>
+</div>
+<div class="glass-card rounded-lg p-6 border-l-4 border-tertiary-fixed">
+<span class="material-symbols-outlined text-tertiary mb-2">speed</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">AVG PERFORMANCE</p>
+<p class="font-metric-xl text-metric-xl mt-1">94%</p>
+</div>
+<div class="glass-card rounded-lg p-6 border-l-4 border-tertiary-fixed">
+<span class="material-symbols-outlined text-tertiary mb-2">favorite</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">VO2 MAX</p>
+<p class="font-metric-xl text-metric-xl mt-1">52</p>
+</div>
+</section>
+<!-- Connected Devices -->
+<section class="glass-card rounded-lg p-card-padding">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md">Connected Devices</h3>
+<button class="flex items-center gap-2 text-tertiary font-bold hover:underline">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-caps text-label-caps">LINK NEW DEVICE</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Device 1 -->
+<div class="flex items-center justify-between p-4 bg-white border border-glass-border rounded-lg shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-full">
+<span class="material-symbols-outlined text-on-surface">watch</span>
+</div>
+<div>
+<p class="font-body-md font-bold">Boult Drift Pro</p>
+<p class="text-xs text-on-surface-variant">Last synced: 2 minutes ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-on-tertiary-container/10 text-on-tertiary-container rounded-full text-[10px] font-bold">ACTIVE</span>
+<button class="material-symbols-outlined text-on-surface-variant">settings</button>
+</div>
+</div>
+<!-- Device 2 -->
+<div class="flex items-center justify-between p-4 bg-white border border-glass-border rounded-lg shadow-sm opacity-60">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container rounded-full">
+<span class="material-symbols-outlined text-on-surface">scale</span>
+</div>
+<div>
+<p class="font-body-md font-bold">Smart Scale V2</p>
+<p class="text-xs text-on-surface-variant">Not connected</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-[10px] font-bold">OFFLINE</span>
+<button class="material-symbols-outlined text-on-surface-variant">settings</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Settings & Preferences -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Notifications -->
+<section class="glass-card rounded-lg p-card-padding">
+<h3 class="font-headline-md text-headline-md mb-6">Notifications</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md font-semibold">Activity Reminders</p>
+<p class="text-xs text-on-surface-variant">Daily nudge to meet goals</p>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-tertiary-fixed shadow-inner cursor-pointer">
+<div class="absolute left-6 top-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md font-semibold">Achievement Alerts</p>
+<p class="text-xs text-on-surface-variant">When you hit milestones</p>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-tertiary-fixed shadow-inner cursor-pointer">
+<div class="absolute left-6 top-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md font-semibold">Weekly Report</p>
+<p class="text-xs text-on-surface-variant">Digest of your progress</p>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-surface-container-highest shadow-inner cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all shadow-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy & Security -->
+<section class="glass-card rounded-lg p-card-padding">
+<h3 class="font-headline-md text-headline-md mb-6">Privacy &amp; Security</h3>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-between p-3 hover:bg-surface-container rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+<span class="font-body-md font-medium">Password Management</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 hover:bg-surface-container rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">verified_user</span>
+<span class="font-body-md font-medium">Two-Factor Auth</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 hover:bg-surface-container rounded-lg transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">visibility</span>
+<span class="font-body-md font-medium">Data Sharing</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Support Card -->
+<div class="relative overflow-hidden bg-on-surface text-white rounded-lg p-card-padding shadow-xl">
+<div class="relative z-10">
+<h4 class="font-headline-md text-white mb-2">Need Help?</h4>
+<p class="text-sm text-surface-variant mb-6">Our concierge medical team is available 24/7 for Premium members.</p>
+<button class="w-full bg-tertiary-fixed text-on-tertiary-fixed py-3 rounded-full font-bold hover:scale-[1.02] transition-transform">CHAT WITH SUPPORT</button>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-tertiary-fixed opacity-10 rounded-full blur-3xl"></div>
+</div>
+<!-- Danger Zone -->
+<div class="p-card-padding pt-0">
+<button class="w-full py-3 border border-error/30 text-error rounded-full font-label-caps text-label-caps hover:bg-error/5 transition-colors">DEACTIVATE ACCOUNT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-tertiary-fixed text-on-tertiary-fixed rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 md:hidden">
+<span class="material-symbols-outlined text-[32px]">support_agent</span>
+</button>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-glass-fill backdrop-blur-xl border-t border-glass-border grid grid-cols-4 px-4 py-2 z-50">
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-label-caps">Metrics</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-tertiary-fixed font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-label-caps">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-caps">Settings</span>
+</a>
+</nav>
+</body></html>

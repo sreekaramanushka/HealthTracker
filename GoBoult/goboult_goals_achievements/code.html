@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-bright": "#fcf8f8",
+                        "on-surface": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#e2e2e2",
+                        "on-tertiary-container": "#677f00",
+                        "on-surface-variant": "#444748",
+                        "inverse-primary": "#c6c6c7",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#ddd9d9",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "outline": "#747878",
+                        "on-tertiary-fixed": "#171e00",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#e2e2e2",
+                        "surface-tint": "#5d5f5f",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary": "#526600",
+                        "primary-container": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#aed500",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-fixed-variant": "#3d4d00",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "surface": "#fcf8f8",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e5e2e1",
+                        "neon-glow": "rgba(209, 255, 0, 0.4)",
+                        "surface-container-high": "#ebe7e7",
+                        "glass-fill": "rgba(255, 255, 255, 0.7)",
+                        "primary": "#5d5f5f",
+                        "background": "#fcf8f8",
+                        "secondary": "#5e5e5e",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed": "#c7f300",
+                        "on-primary-container": "#747676",
+                        "glass-border": "rgba(0, 0, 0, 0.05)",
+                        "outline-variant": "#c4c7c8",
+                        "on-error": "#ffffff",
+                        "subtle-gray": "#BCBCBC",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "card-padding": "32px",
+                        "section-gap": "80px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "metric-xl": ["Sora"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen fixed left-0 top-0 w-64 bg-surface dark:bg-surface-dim border-r border-glass-border shadow-sm flex flex-col p-margin-mobile gap-unit z-[60]">
+<div class="mb-8 px-4">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface dark:text-inverse-on-surface">GoBoult</span>
+</div>
+<div class="flex flex-col gap-2 overflow-y-auto flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-caps text-label-caps uppercase">Daily Logs</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-caps text-label-caps uppercase">Nutrition</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="font-label-caps text-label-caps uppercase">Water Intake</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">bedtime</span>
+<span class="font-label-caps text-label-caps uppercase">Sleep Tracker</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calculate</span>
+<span class="font-label-caps text-label-caps uppercase">BMI Calculator</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps uppercase">Analytics</span>
+</a>
+<a class="flex items-center gap-4 bg-on-tertiary-container text-tertiary-fixed rounded-full p-4 shadow-[0_0_20px_rgba(199,243,0,0.25)] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-label-caps text-label-caps uppercase">Goals</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps uppercase">Profile</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps uppercase">Settings</span>
+</a>
+</div>
+<div class="mt-auto border-t border-glass-border pt-4">
+<div class="flex items-center gap-3 p-4">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover" data-alt="A close-up portrait of a fit, smiling professional man in a clean, minimalist setting. The lighting is bright and even, following a high-key light mode aesthetic. The background is a soft, blurred clinical white space, emphasizing health and premium lifestyle. The overall mood is confident and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJVRqnGMNhD6Y_pgvrqwpNL8BkCfGIqncC7WW6yyimm0GYDnPb4_KpGrkDJQDDdKcGIziaUTR90ysZDUtDwuDYDHgJPjUfhanWyyhuwMns-Cw1vVzRjeiy5ShqGgt-XjVdEshUzsuo0_LryuiyBMGZec9M197EwSm3l6AXtB7pOv6aQTbB_153PEaQbQWfaQzFPAj8hRtpAcqXUJUM7DlhOqDNM9u7LpqgSNjw1R6CD9BERkXwfH3O7G12SOyvZyRI0XXk2Ev8Fec"/>
+<div>
+<p class="font-headline-md text-sm font-bold text-on-surface">Alex River</p>
+<p class="font-label-caps text-[10px] text-tertiary uppercase">Premium Tier</p>
+</div>
+</div>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-error p-4 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps uppercase">Logout</span>
+</a>
+</div>
+</aside>
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto bg-glass-fill backdrop-blur-xl border-b border-glass-border shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md focus-within:ring-2 focus-within:ring-neon-glow rounded-full transition-all">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-2 bg-surface-container-low border-none rounded-full text-body-md focus:ring-0 placeholder:text-on-surface-variant" placeholder="Search achievements..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-on-surface hover:text-tertiary-fixed transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary-fixed rounded-full shadow-[0_0_8px_rgba(199,243,0,0.8)]"></span>
+</button>
+<div class="h-8 w-px bg-glass-border"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps uppercase text-on-surface">Achievements</span>
+</div>
+</div>
+</header>
+<div class="px-gutter py-10 max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-10">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Performance Metrics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Visualizing your journey towards peak performance. Track your milestones and unlock the future of your well-being.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-on-surface text-surface py-3 px-8 rounded-full font-label-caps text-label-caps uppercase hover:ring-2 hover:ring-tertiary-fixed transition-all">Set New Goal</button>
+</div>
+</div>
+<!-- Bento Grid: Main Stats & Progress -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Daily Goals Progress (Left) -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+<div class="bg-glass-fill backdrop-blur-xl border border-glass-border p-card-padding rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.03)] flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md mb-1">Weekly Cardio</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Goal: 150 mins</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-fixed text-4xl">directions_run</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-end mb-2">
+<span class="font-metric-xl text-metric-xl text-tertiary-fixed">120</span>
+<span class="font-body-md text-on-surface-variant">/ 150 min</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed shadow-[0_0_15px_rgba(199,243,0,0.5)]" style="width: 80%"></div>
+</div>
+</div>
+</div>
+<div class="bg-glass-fill backdrop-blur-xl border border-glass-border p-card-padding rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.03)] flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md mb-1">Deep Sleep</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Goal: 7h Average</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-fixed text-4xl">bedtime</span>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-end mb-2">
+<span class="font-metric-xl text-metric-xl text-tertiary-fixed">6.4</span>
+<span class="font-body-md text-on-surface-variant">/ 7 hours</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed shadow-[0_0_15px_rgba(199,243,0,0.5)]" style="width: 91%"></div>
+</div>
+</div>
+</div>
+<div class="bg-on-surface text-surface p-card-padding rounded-lg shadow-[0_20px_40px_rgba(0,0,0,0.1)] col-span-1 sm:col-span-2">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md mb-4 text-surface">Overall Health Score</h3>
+<p class="font-body-md text-surface-variant mb-6">You're in the top 2% of performers this month. Keep your streak to unlock the "Titan" badge.</p>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-surface/10 rounded-full border border-surface/20 font-label-caps text-xs uppercase">Strength: Elite</div>
+<div class="px-4 py-2 bg-surface/10 rounded-full border border-surface/20 font-label-caps text-xs uppercase">Recovery: High</div>
+</div>
+</div>
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface/10" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-tertiary-fixed" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.6" stroke-dashoffset="50.2" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-metric-xl text-metric-xl text-surface">92</span>
+<span class="font-label-caps text-[10px] text-surface-variant uppercase">Optimal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Highlights (Right) -->
+<div class="md:col-span-4 space-y-gutter">
+<div class="bg-surface-container-lowest border border-glass-border p-card-padding rounded-lg shadow-sm">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-6">Hydration Master</h4>
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-tertiary-fixed/20 rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(199,243,0,0.3)] border border-tertiary-fixed/30 relative">
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<div class="absolute -top-1 -right-1 w-6 h-6 bg-on-surface text-surface text-[10px] flex items-center justify-center rounded-full font-bold">14</div>
+</div>
+<div>
+<p class="font-headline-md text-lg font-bold">Lvl 4 Achieved</p>
+<p class="font-body-md text-sm text-on-surface-variant">3 liters/day for 14 consecutive days.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-glass-border p-card-padding rounded-lg shadow-sm overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-6">Social Comparison</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Friend 1" data-alt="A portrait of a young athletic male with a neutral professional expression. High-end lighting, minimalist white and grey background, premium tech brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFA4RjzL1U8mfy1er07Pqi1ueDsU6Z1TrWb_lVDs4RVwvwqpjMXE6YX7fYssK2D3JORcu8yDweBV4cZeMBotZwJe5J0pFY5rodBrkEl-nXaD29eN8qK2QXeawZye2vh0JnZ2NQvCwy0-RVe3JUEBGSGwU8UD3CfCBGsZ_fRbn-5h_E2U6gcZW5Q_A0vGKTCA-dkLl5-Lr3HTZqF-89ezmTf7nGE0tr2OTRWqM82xrTINOdgqcilcuA7RJkcN2leAXT1pJZT2cZM88"/>
+</div>
+<div class="flex-grow h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-on-surface-variant w-[85%]"></div>
+</div>
+<span class="font-label-caps text-xs">85%</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full border-2 border-tertiary-fixed bg-surface-container-high overflow-hidden shadow-[0_0_10px_rgba(199,243,0,0.4)]">
+<img alt="You" data-alt="Close up avatar of a professional man, smiling, soft focus white background, high key lighting, healthcare tech style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXbMWJXEGKO188k0r4GnPhr8zcvh3juriajZVLKHnzCpElZNJarhociSYofpHMvJcwVUOHb9cYZPHxj5Yl6KhYLiKg13jvPqb9J28qyR1IwHwETDFsFfh6aKOQp9_0Dysz7yz7CdAo1dxUjM4wL94Uv6FrzAFZZb8Yhx_fK8gD509YLn3DOqYvB5oLoom6RnzvANCTDoppcJ_xi7pEl2d9U8GE3IiHH0giMWWZ4nzhMbT67f5hJQdaHtlJ9gPZkt9_bPX0xzw0eGk"/>
+</div>
+<div class="flex-grow h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed w-[92%] shadow-[0_0_10px_rgba(199,243,0,0.5)]"></div>
+</div>
+<span class="font-label-caps text-xs text-tertiary-fixed font-bold">92%</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Friend 2" data-alt="Studio portrait of a focused woman in athletic wear, minimalist background, clinical lighting, clean modern photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkiDlpS-aLwwGwql_GTDzhpEU1dIz5wTzMLH1T2B7Ffh23K861FRoi28McALBXtrq4GT9C2qYrp3d0v0Zg0oqRfaCePVfazGb7oe3wVc_6wNuJt4gaEHYmgLOJUpZk5DcrSOSOIoZ6Kdm7QXhtzhZR10SGUohTsJZtExpJY21iJfICAA03KA0LbkHokHxFOagDKhHRhNKikaUK6CP_B16SkpRVfvoLgiBRVQUJsdPQrh2v596P0e33r6m9SaKJgH3_dFwJLmyObE0"/>
+</div>
+<div class="flex-grow h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-on-surface-variant w-[72%]"></div>
+</div>
+<span class="font-label-caps text-xs">72%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievement Badge Grid -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-10">
+<h2 class="font-headline-lg text-headline-lg">Unlocked Badges</h2>
+<button class="text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase flex items-center gap-2">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+<!-- Badge 1 -->
+<div class="bg-glass-fill border border-glass-border p-6 rounded-lg flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all group">
+<div class="w-20 h-20 bg-surface-container mb-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative">
+<div class="absolute inset-0 bg-tertiary-fixed opacity-0 group-hover:opacity-20 rounded-full blur-xl transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<p class="font-label-caps text-xs uppercase text-on-surface-variant">Early Bird</p>
+</div>
+<!-- Badge 2 -->
+<div class="bg-glass-fill border border-glass-border p-6 rounded-lg flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all group">
+<div class="w-20 h-20 bg-tertiary-fixed/10 mb-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative border border-tertiary-fixed/30">
+<div class="absolute inset-0 bg-tertiary-fixed opacity-30 rounded-full blur-lg"></div>
+<span class="material-symbols-outlined text-4xl text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<p class="font-label-caps text-xs uppercase text-on-surface">7 Day Streak</p>
+</div>
+<!-- Badge 3 -->
+<div class="bg-glass-fill border border-glass-border p-6 rounded-lg flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all group">
+<div class="w-20 h-20 bg-surface-container mb-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<p class="font-label-caps text-xs uppercase text-on-surface-variant">Heart Hero</p>
+</div>
+<!-- Badge 4 -->
+<div class="bg-glass-fill border border-glass-border p-6 rounded-lg flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all group">
+<div class="w-20 h-20 bg-surface-container mb-4 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform relative">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<p class="font-label-caps text-xs uppercase text-on-surface-variant">Macro Pro</p>
+</div>
+<!-- Badge 5 -->
+<div class="bg-glass-fill border border-glass-border p-6 rounded-lg flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all group opacity-40 grayscale">
+<div class="w-20 h-20 bg-surface-container mb-4 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface">lock</span>
+</div>
+<p class="font-label-caps text-xs uppercase text-on-surface-variant">Peak Titan</p>
+</div>
+<!-- Badge 6 -->
+<div class="bg-glass-fill border border-glass-border p-6 rounded-lg flex flex-col items-center text-center hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] transition-all group opacity-40 grayscale">
+<div class="w-20 h-20 bg-surface-container mb-4 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface">lock</span>
+</div>
+<p class="font-label-caps text-xs uppercase text-on-surface-variant">Zen Master</p>
+</div>
+</div>
+</section>
+<!-- Milestone Timeline -->
+<section class="mb-section-gap">
+<h2 class="font-headline-lg text-headline-lg mb-10">Journey Timeline</h2>
+<div class="relative">
+<!-- Timeline Line -->
+<div class="absolute left-8 top-0 bottom-0 w-0.5 bg-surface-container-high hidden md:block"></div>
+<div class="space-y-12 relative">
+<!-- Past Milestone -->
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="w-16 h-16 rounded-full bg-on-surface flex items-center justify-center shrink-0 z-10 shadow-lg">
+<span class="material-symbols-outlined text-surface text-3xl">check_circle</span>
+</div>
+<div class="bg-glass-fill border border-glass-border p-card-padding rounded-lg flex-grow shadow-sm">
+<span class="font-label-caps text-xs text-on-surface-variant uppercase mb-2 block">October 12, 2023</span>
+<h4 class="font-headline-md text-headline-md mb-2">Weight Goal Achieved: 75kg</h4>
+<p class="font-body-md text-on-surface-variant">You successfully maintained your target weight for 3 months. System reward: +500 XP and Lifetime 'Sustainer' Badge.</p>
+</div>
+</div>
+<!-- Current Milestone -->
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0 z-10 shadow-[0_0_20px_rgba(199,243,0,0.5)]">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl">trending_up</span>
+</div>
+<div class="bg-on-tertiary-container text-tertiary-fixed p-card-padding rounded-lg flex-grow shadow-md border-2 border-tertiary-fixed/30 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed font-label-caps text-[10px] uppercase rounded-full">In Progress</span>
+</div>
+<span class="font-label-caps text-xs text-tertiary-fixed/80 uppercase mb-2 block">Present Journey</span>
+<h4 class="font-headline-md text-headline-md mb-2">Marathon Readiness</h4>
+<p class="font-body-md text-tertiary-fixed/90 mb-6">Running endurance is currently at 84%. Complete 3 more 10k sessions to reach 100%.</p>
+<div class="w-full h-1.5 bg-on-tertiary-fixed/20 rounded-full">
+<div class="h-full bg-tertiary-fixed" style="width: 84%"></div>
+</div>
+</div>
+</div>
+<!-- Upcoming Milestone -->
+<div class="flex flex-col md:flex-row gap-8 items-start opacity-50">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-dashed border-outline-variant flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">flag</span>
+</div>
+<div class="bg-surface-container-low border border-glass-border border-dashed p-card-padding rounded-lg flex-grow">
+<span class="font-label-caps text-xs text-on-surface-variant uppercase mb-2 block">December 2023 Projection</span>
+<h4 class="font-headline-md text-headline-md mb-2">Iron Core Challenge</h4>
+<p class="font-body-md text-on-surface-variant">Unlocked after completing the Marathon Readiness journey. Requires consistent core stability metrics.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Action -->
+<section class="bg-surface-container rounded-lg p-card-padding text-center border border-glass-border">
+<h3 class="font-headline-md text-headline-md mb-4">Want more challenges?</h3>
+<p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Connect with the GoBoult Community to participate in global challenges and win exclusive performance gear.</p>
+<div class="flex justify-center gap-4">
+<button class="bg-on-surface text-surface py-3 px-10 rounded-full font-label-caps text-label-caps uppercase hover:ring-2 hover:ring-tertiary-fixed transition-all">Explore Challenges</button>
+<button class="border border-on-surface text-on-surface py-3 px-10 rounded-full font-label-caps text-label-caps uppercase hover:bg-on-surface hover:text-surface transition-all">Create Squad</button>
+</div>
+</section>
+</div>
+<!-- Footer Space -->
+<footer class="px-gutter py-10 border-t border-glass-border max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center text-on-surface-variant">
+<p class="font-label-caps text-xs uppercase mb-4 md:mb-0">© 2023 GoBoult Performance Labs. All metrics encrypted.</p>
+<div class="flex gap-8">
+<a class="font-label-caps text-xs uppercase hover:text-on-surface" href="#">Privacy</a>
+<a class="font-label-caps text-xs uppercase hover:text-on-surface" href="#">Data Rights</a>
+<a class="font-label-caps text-xs uppercase hover:text-on-surface" href="#">Support</a>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Only for main landing, suppressed here but added for structure reference) -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-tertiary-fixed text-on-tertiary-fixed rounded-full shadow-[0_15px_30px_rgba(199,243,0,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</button>
+</body></html>

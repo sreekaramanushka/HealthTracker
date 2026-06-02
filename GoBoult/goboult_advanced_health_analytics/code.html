@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-bright": "#fcf8f8",
+                        "on-surface": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#e2e2e2",
+                        "on-tertiary-container": "#677f00",
+                        "on-surface-variant": "#444748",
+                        "inverse-primary": "#c6c6c7",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#ddd9d9",
+                        "inverse-surface": "#313030",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "outline": "#747878",
+                        "on-tertiary-fixed": "#171e00",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#e2e2e2",
+                        "surface-tint": "#5d5f5f",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary": "#526600",
+                        "primary-container": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#aed500",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-fixed-variant": "#3d4d00",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "surface": "#fcf8f8",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e5e2e1",
+                        "neon-glow": "rgba(209, 255, 0, 0.4)",
+                        "surface-container-high": "#ebe7e7",
+                        "glass-fill": "rgba(255, 255, 255, 0.7)",
+                        "primary": "#5d5f5f",
+                        "background": "#fcf8f8",
+                        "secondary": "#5e5e5e",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed": "#c7f300",
+                        "on-primary-container": "#747676",
+                        "glass-border": "rgba(0, 0, 0, 0.05)",
+                        "outline-variant": "#c4c7c8",
+                        "on-error": "#ffffff",
+                        "subtle-gray": "#BCBCBC",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "card-padding": "32px",
+                        "section-gap": "80px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "metric-xl": ["Sora"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "metric-xl": ["40px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- SideNavBar -->
+<aside class="h-screen fixed left-0 top-0 w-64 bg-surface border-r border-glass-border flex flex-col p-margin-mobile gap-unit z-[60] hidden md:flex">
+<div class="mb-8 px-4">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">GoBoult</span>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a fitness professional in a sleek modern studio. The lighting is soft and high-key, emphasizing a clean and premium health aesthetic. The background is a minimalist, slightly blurred white interior that aligns with a luxury performance brand identity. The subject has a confident, approachable expression, fitting for a premium health tier user." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGeeEdkeQEewzNB58Ln830_OMpRHnpYvIuN9VeGoSeVlY0G_EjXFT_XJRUbqHwnDcXi5zxfgq3e_LTha5vW8W8XD40qMt1uJF0Pvfx-fk7jddDDBT-1fJcZNEdfr1OsOxwfvpwLLprfBqgGZ-Kjh2HwZ8t1oQ5ZIj80YSygKLdwuEUcaocGOWNVpuy8G6BzC2Co3E0eExMo5O-ALHiusmcU6BvFGgORix4UsyrgnV_KMRTJRqWXKL8c70iG4N0GbIvBs9fPo90e_c"/>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">Performance Metrics</p>
+<p class="text-[10px] text-tertiary-fixed-dim uppercase tracking-widest font-bold">Premium Tier</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-caps text-label-caps">Daily Logs</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-caps text-label-caps">Nutrition</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">water_drop</span>
+<span class="font-label-caps text-label-caps">Water Intake</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">bedtime</span>
+<span class="font-label-caps text-label-caps">Sleep Tracker</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calculate</span>
+<span class="font-label-caps text-label-caps">BMI Calculator</span>
+</a>
+<!-- Active State: Analytics -->
+<a class="flex items-center gap-4 bg-on-tertiary-container text-tertiary-fixed rounded-full p-4 shadow-[0_0_20px_rgba(199,243,0,0.25)] active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-label-caps text-label-caps">Goals</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+<div class="mt-auto pt-8 border-t border-glass-border">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface p-4 hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</nav>
+</aside>
+<div class="md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto bg-glass-fill border-b border-glass-border backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-gutter w-full">
+<div class="relative flex-1 max-w-md focus-within:ring-2 focus-within:ring-neon-glow rounded-full transition-all">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-12 pr-4 text-body-md focus:ring-0" placeholder="Search analytics..." type="text"/>
+</div>
+<div class="flex items-center gap-6 ml-auto">
+<div class="hidden lg:flex gap-6">
+<span class="font-label-caps text-label-caps text-tertiary-fixed font-bold">Analytics</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-tertiary-fixed transition-all duration-300 cursor-pointer">Reports</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-tertiary-fixed transition-all duration-300 cursor-pointer">Export</span>
+</div>
+<button class="material-symbols-outlined text-on-surface hover:text-tertiary-fixed transition-all">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-glass-border">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close up portrait of a professional man in high key lighting, minimalist white studio background, clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYbvG2mXRyQtekvuziBmaprO5CtvceWqWUmclHG42tBvGVXm88FfbI_8YLGJGdpnfp6Dbn7SCxGzx2YoPw--ACF0TuUGwC-cOd9nnXDVdWSPQOt2uMktPCiQCojpyoeIPVEvk1NhWDG0tLyLIbYPupcsFomW5dwgd-yR9BlbpPPeDUmpr7ymb3HCd-II8wy8Msr45WxfHMKZSl5JjeNXLAwlRQe0HZOr1wThjHgRv61gjLeZmK-UYQ7F1Au3gRDieRPftHweXNkvU"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-gutter py-8">
+<!-- Page Header Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Analytics Deep-Dive</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Comprehensive breakdown of your physiological performance indicators.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-white border border-subtle-gray text-on-surface rounded-full font-label-caps text-label-caps hover:border-on-surface transition-all active:scale-95">
+                        Download PDF
+                    </button>
+<button class="px-8 py-3 bg-on-surface text-white rounded-full font-label-caps text-label-caps hover:shadow-[0_0_20px_rgba(199,243,0,0.4)] hover:border-tertiary-fixed border border-transparent transition-all active:scale-95">
+                        Export Report
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Main Trend Chart -->
+<div class="col-span-12 lg:col-span-8 bg-glass-fill glass-effect border border-glass-border rounded-lg p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">30-Day Health Trends</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Core performance trajectory</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-tertiary-fixed/10 text-on-tertiary-container text-[10px] px-2 py-1 rounded font-bold uppercase">Live Data</span>
+</div>
+</div>
+<div class="h-64 relative w-full overflow-hidden">
+<!-- Simplified SVG Chart Representation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgba(199, 243, 0, 0.2)"></stop>
+<stop offset="100%" style="stop-color:rgba(199, 243, 0, 0)"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q50,75 100,40 T200,60 T300,20 T400,30 V100 H0 Z" fill="url(#chartGradient)"></path>
+<path d="M0,80 Q50,75 100,40 T200,60 T300,20 T400,30" fill="none" stroke="#1c1b1b" stroke-width="1.5"></path>
+</svg>
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-2 text-[10px] font-label-caps text-on-surface-variant opacity-50">
+<span>01 OCT</span>
+<span>10 OCT</span>
+<span>20 OCT</span>
+<span>30 OCT</span>
+</div>
+</div>
+</div>
+<!-- Monthly Goals Radial -->
+<div class="col-span-12 lg:col-span-4 bg-glass-fill glass-effect border border-glass-border rounded-lg p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<h3 class="font-label-caps text-label-caps text-on-surface mb-6">Monthly Goal Completion</h3>
+<div class="relative w-48 h-48 mb-6">
+<!-- Progress Ring 1 -->
+<svg class="w-full h-full -rotate-90">
+<circle class="text-tertiary-fixed/10" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-tertiary-fixed" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502" stroke-dashoffset="120" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Inner Ring -->
+<circle class="text-on-surface/5" cx="96" cy="96" fill="transparent" r="60" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-on-surface" cx="96" cy="96" fill="transparent" r="60" stroke="currentColor" stroke-dasharray="377" stroke-dashoffset="100" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-metric-xl text-metric-xl text-on-surface">82%</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">Combined</span>
+</div>
+</div>
+<div class="flex gap-4 justify-center">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
+<span class="text-[10px] font-label-caps text-on-surface-variant">Activity</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-surface"></span>
+<span class="text-[10px] font-label-caps text-on-surface-variant">Sleep</span>
+</div>
+</div>
+</div>
+<!-- Metrics Summary Section -->
+<div class="col-span-12 grid grid-cols-1 md:grid-cols-3 gap-gutter mt-unit">
+<div class="bg-surface-container-low p-card-padding rounded-lg border border-glass-border">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed bg-on-surface p-2 rounded-full">favorite</span>
+<span class="text-on-tertiary-container font-bold text-xs">+4.2%</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">Resting Heart Rate</p>
+<p class="font-metric-xl text-metric-xl text-on-surface">62 <span class="text-body-md font-normal opacity-50">BPM</span></p>
+</div>
+<div class="bg-surface-container-low p-card-padding rounded-lg border border-glass-border">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed bg-on-surface p-2 rounded-full">bolt</span>
+<span class="text-on-tertiary-container font-bold text-xs">+12.8%</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">Active Calories</p>
+<p class="font-metric-xl text-metric-xl text-on-surface">1,240 <span class="text-body-md font-normal opacity-50">KCAL</span></p>
+</div>
+<div class="bg-surface-container-low p-card-padding rounded-lg border border-glass-border">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed bg-on-surface p-2 rounded-full">speed</span>
+<span class="text-error font-bold text-xs">-2.1%</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">VO2 Max</p>
+<p class="font-metric-xl text-metric-xl text-on-surface">48.5 <span class="text-body-md font-normal opacity-50">ML/KG</span></p>
+</div>
+</div>
+<!-- Comparison Bar Chart -->
+<div class="col-span-12 lg:col-span-6 bg-glass-fill glass-effect border border-glass-border rounded-lg p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.03)]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8">Performance vs. Last Month</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-label-caps text-[11px] text-on-surface-variant uppercase">
+<span>Endurance</span>
+<span class="text-on-surface font-bold">88%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed" style="width: 88%"></div>
+</div>
+<div class="h-1 w-full bg-surface-container-highest/50 rounded-full overflow-hidden opacity-50">
+<div class="h-full bg-on-surface" style="width: 76%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-caps text-[11px] text-on-surface-variant uppercase">
+<span>Recovery speed</span>
+<span class="text-on-surface font-bold">94%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed" style="width: 94%"></div>
+</div>
+<div class="h-1 w-full bg-surface-container-highest/50 rounded-full overflow-hidden opacity-50">
+<div class="h-full bg-on-surface" style="width: 82%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-caps text-[11px] text-on-surface-variant uppercase">
+<span>Nutritional Balance</span>
+<span class="text-on-surface font-bold">72%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed" style="width: 72%"></div>
+</div>
+<div class="h-1 w-full bg-surface-container-highest/50 rounded-full overflow-hidden opacity-50">
+<div class="h-full bg-on-surface" style="width: 75%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Health Report Section -->
+<div class="col-span-12 lg:col-span-6 bg-on-surface text-white rounded-lg p-card-padding relative overflow-hidden">
+<!-- Subtle decorative gradient -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-tertiary-fixed/10 blur-[100px] -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-tertiary-fixed">verified_user</span>
+<h3 class="font-headline-md text-headline-md">Oct Health Insight</h3>
+</div>
+<div class="space-y-6">
+<div class="p-4 bg-white/5 rounded-lg border border-white/10 backdrop-blur-sm">
+<p class="text-tertiary-fixed font-bold font-label-caps text-[10px] mb-2 uppercase tracking-widest">Key Takeaway</p>
+<p class="font-body-md text-white/80 leading-relaxed">Your cardiovascular recovery time has improved by 15% this month, likely due to consistent HIIT sessions on Tuesdays and Thursdays. Maintain this rhythm.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-white/50 text-[10px] font-label-caps uppercase">Sleep Efficiency</p>
+<p class="text-headline-md font-bold text-tertiary-fixed">Optimum</p>
+</div>
+<div>
+<p class="text-white/50 text-[10px] font-label-caps uppercase">Stress Levels</p>
+<p class="text-headline-md font-bold text-white">Low</p>
+</div>
+</div>
+<button class="w-full py-4 border border-white/20 hover:border-tertiary-fixed hover:text-tertiary-fixed rounded-full transition-all text-white font-label-caps text-label-caps">
+                                View Full Clinical Breakdown
+                            </button>
+</div>
+</div>
+</div>
+<!-- Comparison Analytics -->
+<div class="col-span-12 bg-surface-container-highest/30 rounded-lg p-card-padding border border-glass-border">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface">Category Comparison</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-tertiary-fixed rounded-full"></span>
+<span class="text-xs font-label-caps text-on-surface">You</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-subtle-gray rounded-full"></span>
+<span class="text-xs font-label-caps text-on-surface">Peer Avg</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="h-40 flex items-end justify-center gap-2 mb-4">
+<div class="w-8 bg-subtle-gray/30 rounded-t-lg h-3/4"></div>
+<div class="w-8 bg-tertiary-fixed rounded-t-lg h-full shadow-[0_0_20px_rgba(199,243,0,0.3)]"></div>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">Activity</span>
+</div>
+<div class="text-center">
+<div class="h-40 flex items-end justify-center gap-2 mb-4">
+<div class="w-8 bg-subtle-gray/30 rounded-t-lg h-full"></div>
+<div class="w-8 bg-tertiary-fixed rounded-t-lg h-4/5 shadow-[0_0_20px_rgba(199,243,0,0.3)]"></div>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">Sleep</span>
+</div>
+<div class="text-center">
+<div class="h-40 flex items-end justify-center gap-2 mb-4">
+<div class="w-8 bg-subtle-gray/30 rounded-t-lg h-1/2"></div>
+<div class="w-8 bg-tertiary-fixed rounded-t-lg h-3/4 shadow-[0_0_20px_rgba(199,243,0,0.3)]"></div>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">Hydration</span>
+</div>
+<div class="text-center">
+<div class="h-40 flex items-end justify-center gap-2 mb-4">
+<div class="w-8 bg-subtle-gray/30 rounded-t-lg h-3/5"></div>
+<div class="w-8 bg-tertiary-fixed rounded-t-lg h-2/3 shadow-[0_0_20px_rgba(199,243,0,0.3)]"></div>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant uppercase">Recovery</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile FAB - Contextually suppressed on analytics/details screens as per UX Goal, but included here for completeness of navigation shell if needed -->
+<button class="md:hidden fixed bottom-24 right-6 w-14 h-14 bg-tertiary-fixed text-on-tertiary-fixed rounded-full shadow-lg flex items-center justify-center z-50">
+<span class="material-symbols-outlined">add</span>
+</button>
+<!-- Mobile Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-glass-fill backdrop-blur-xl border-t border-glass-border flex justify-around items-center py-3 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-tertiary-fixed font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="text-[10px] font-label-caps">Analytics</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">event_note</span>
+<span class="text-[10px] font-label-caps">Logs</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label-caps">Profile</span>
+</button>
+</nav>
+</body></html>
