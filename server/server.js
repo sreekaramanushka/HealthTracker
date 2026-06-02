@@ -6,14 +6,25 @@ const connectDB = require('./config/db');
 // Load env vars
 dotenv.config();
 
-// Connect to database
-connectDB();
-
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(cors()); // Allow all origins for Vercel Serverless
+
+// Ensure database is connected for every request (Serverless friendly)
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error('Database connection middleware error:', error.message);
+        res.status(500).json({ 
+            message: 'Database connection failed. Please ensure MONGO_URI is set in Vercel settings and Atlas IP Access List whitelists 0.0.0.0/0.', 
+            error: error.message 
+        });
+    }
+});
 
 // Route files
 const authRoutes = require('./routes/authRoutes');

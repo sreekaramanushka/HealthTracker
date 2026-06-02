@@ -1,35 +1,35 @@
 const mongoose = require('mongoose');
 
-// Global cache for connection to reuse across serverless invocations
-let cachedConnection = null;
+// Global cache for connection promise to reuse across serverless invocations
+let cachedPromise = null;
 
 const connectDB = async () => {
-    // If a connection is already established, reuse it
-    if (cachedConnection && mongoose.connection.readyState === 1) {
-        return cachedConnection;
+    // If mongoose is already connected, reuse the active connection
+    if (mongoose.connection.readyState === 1) {
+        return mongoose.connection;
     }
 
-    try {
+    // If there is no connection attempt in progress, start one
+    if (!cachedPromise) {
         if (!process.env.MONGO_URI) {
-            throw new Error('MONGO_URI is missing from environment variables');
+            throw new Error('MONGO_URI environment variable is missing');
         }
 
         console.log('Connecting to MongoDB Atlas...');
         
-        // Connect to MongoDB without buffering commands
-        const conn = await mongoose.connect(process.env.MONGO_URI, {
+        cachedPromise = mongoose.connect(process.env.MONGO_URI, {
             bufferCommands: false,
+        }).then((mongooseInstance) => {
+            console.log(`MongoDB Connected: ${mongooseInstance.connection.host}`);
+            return mongooseInstance.connection;
+        }).catch((error) => {
+            cachedPromise = null; // Clear cache on failure so next request can retry
+            console.error(`Database Connection Error: ${error.message}`);
+            throw error;
         });
-
-        cachedConnection = conn;
-        console.log(`MongoDB Connected: ${conn.connection.host}`);
-        return conn;
-    } catch (error) {
-        console.error(`Database Connection Error: ${error.message}`);
-        // Do NOT use process.exit(1) in Vercel serverless environment as it crashes the worker.
-        // Instead, throw the error so that Express handles it or the request fails gracefully.
-        throw error;
     }
+
+    return cachedPromise;
 };
 
 module.exports = connectDB;
